@@ -2,12 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@media (min-width: 30em) {
-    .row { width: 100%; display: table; table-layout: fixed; }
-    .col { display: table-cell; }
-}
 
-.invalid-input {
+
+/*.invalid-input {
   color: red;
 }
 
@@ -15,11 +12,9 @@
   border: 2px solid grey;
   padding: 10px 40px;
   border-radius: 25px;
-}
-
-/** {
-  border: 1px dotted black;
 }*/
+
+/*`*/
 
 .house {
   width: 2em;
@@ -34,14 +29,14 @@ body{
 .big-padd{
   padding: 50px;
 }
-#create-button{
+/*#create-button{
   width: 15em;
   text-align: center;
   border-radius: 3px;
   border: 2px solid green;
-}
+}*/
 
-div .button {
+/*div .button {
   text-decoration: none;
   background-color: #9bd861;
 
@@ -50,39 +45,37 @@ div .button {
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
-}
+}*/
 
 /*div a .button {
   color: white;
 }*/
 
 /* unvisited link */
-.button a:link {
+/*.button a:link {
     color: red;
-}
+}*/
 
 /* visited link */
-.button a:visited {
+/*.button a:visited {
     color: green;
-}
+}*/
 
 /* mouse over link */
-.button a:hover {
+/*.button a:hover {
     color:  #999999;
-}
+}*/
 
 /* selected link */
-.button a:active {
+/*.button a:active {
     color: blue;
-}
+}*/
 
 ul {
   list-style-type: none;
 }
 
 .product-img{
-  position: relative;
-  top: 50px;
   width:70px;
   height:70px;
 }
