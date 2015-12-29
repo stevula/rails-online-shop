@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-
+    @product = Product.find(params[:id])
   end
 
   def create
@@ -26,6 +26,14 @@ class ProductsController < ApplicationController
   end
 
   def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    if @product.save
+      redirect_to @product
+    else
+      @errors = @product.errors.full_messages
+      render :edit
+    end
   end
 
   private
