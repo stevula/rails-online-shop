@@ -7,6 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if @errors %>
+	<div>
+	<% @errors.each do |error| %>
+		<p><%= error %></p>
+	<% end %>
+	</div>
+<% end %>
 
 <%= yield %>
 
