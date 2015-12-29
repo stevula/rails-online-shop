@@ -5,3 +5,4 @@
     <p> Quantity: <%= @product.quantity %></p>
 </div>
 <%= link_to("Update Product Info", edit_product_path) %>
+<%= link_to("Delete Product", product_path, method: :delete) %>
