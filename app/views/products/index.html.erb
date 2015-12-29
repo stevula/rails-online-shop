@@ -1,10 +1,20 @@
-<%= link_to("Create New Product", new_product_path) %>
 <% @products.each do |product| %>
-  <div>
-    <ul>
-      <li>Product Name: <%= link_to(product.name, product_path(product)) %></li>
-      <li>Product Price: $ <%= product.price %> </li>
-      <li>Product Quantity: <%= product.quantity %></li>
-    </ul>
+  <div class="row ">
+    <div class="col" style="width:10%">
+      <img class="product-img" src="https://avatars1.githubusercontent.com/u/10661978?v=3&s=200">
+    </div>
+
+    <div class="col" style="width:90%">
+      <ul>
+        <li>Product Name: <%= link_to(product.name, product_path(product)) %></li>
+        <li>Product Price: $ <%= product.price %> </li>
+        <li>Product Quantity: <%= product.quantity %></li>
+      </ul>
+    </div>
   </div>
 <% end  %>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col button" id="create-button" ><%= link_to("Create New Product", new_product_path) %></div>
+    <div class="col"></div>
+  </div>

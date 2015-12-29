@@ -2,12 +2,24 @@
 <html>
 <head>
   <title>Shop</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+
 </head>
 <body>
-<%= yield %>
+  <header>
+    <nav class="display-div">
+      <a href="/"><img class="house" src="https://d30y9cdsu7xlg0.cloudfront.net/png/41030-200.png"></a>
+    </nav>
+  </header>
+
+  <div class="big-padd">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
+<!-- reference noun project -->
