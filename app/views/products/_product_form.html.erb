@@ -1,0 +1,40 @@
+<%= form_for @product do |f| %>
+  <div>
+    <%= f.label :name, "Name:" %>
+      <% if @product.errors.has_key?(:name) %>
+        <span class="invalid-input"> Name <%= @product.errors[:name].first %> </span>
+      <% end %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :description, "Description:" %>
+      <% if @product.errors.has_key?(:description) %>
+        <span class="invalid-input"> Description <%= @product.errors[:description].first %> </span>
+      <% end %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :quantity, "Quantity:"%>
+      <% if @product.errors.has_key?(:quantity) %>
+        <% @product.errors[:quantity].each do |error| %>
+          <div class="invalid-input"> Quantity <%= error %> </div>
+        <% end %>
+      <% end %>
+    <%= f.text_field :quantity %>
+  <div>
+
+  <div>
+    <%= f.label :price , "Price: $"%>
+      <% if @product.errors.has_key?(:price) %>
+        <% @product.errors[:price].each do |error| %>
+          <div class="invalid-input"> Price <%= error %> </div>
+        <% end %>
+      <% end %>
+    <%= f.text_field :price  %>
+  </div>
+
+  <div><%= f.submit %></div>
+
+<% end %>
