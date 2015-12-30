@@ -16,7 +16,6 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path
     else
-      # @errors = @product.errors.full_messages
       render :new
     end
   end
@@ -31,7 +30,6 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to @product
     else
-      @errors = @product.errors.full_messages
       render :edit
     end
   end
