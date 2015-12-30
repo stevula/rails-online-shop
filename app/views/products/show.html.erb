@@ -4,5 +4,8 @@
     <p> Price: $ <%= @product.price %> </p>
     <p> Quantity: <%= @product.quantity %></p>
 </div>
-<%= link_to("Update Product Info", edit_product_path, class: "btn btn-info") %>
-<%= link_to("Delete Product", product_path, method: :delete, class: "btn btn-danger") %>
+
+<% if user_signed_in? %>
+  <%= link_to("Update Product Info", edit_product_path, class: "btn btn-info") %>
+  <%= link_to("Delete Product", product_path, method: :delete, class: "btn btn-danger") %>
+<% end %>
