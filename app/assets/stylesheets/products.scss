@@ -29,6 +29,7 @@ body{
 .big-padd{
   padding: 50px;
 }
+
 /*#create-button{
   width: 15em;
   text-align: center;
@@ -73,9 +74,13 @@ body{
 
 ul {
   list-style-type: none;
+  padding-left: 0px;
 }
 
 .product-img{
+  position: relative;
+  left: 30px;
   width:70px;
   height:70px;
+  margin-bottom: 10px;
 }
