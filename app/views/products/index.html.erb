@@ -18,8 +18,10 @@
   </div>
 <% end  %>
 
+<% if user_signed_in? %>
   <div class="row">
     <div class="btn btn-success col-sm-2 col-sm-offset-5" >
       <%= link_to("Create New Product", new_product_path) %>
     </div>
   </div>
+<% end %>
