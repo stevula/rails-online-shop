@@ -7,10 +7,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-
-
 </head>
+
 <body>
   <header>
     <nav class="navbar navbar-default">
@@ -27,6 +25,7 @@
             <%= link_to "Login", new_user_session_path  %>
           <% end %>
         </div>
+
     </nav>
   </header>
 
@@ -34,6 +33,6 @@
     <%= yield %>
   </div>
 
+  <p>Thank you Noun Project for the Home image</p>
 </body>
 </html>
-<!-- reference noun project -->
