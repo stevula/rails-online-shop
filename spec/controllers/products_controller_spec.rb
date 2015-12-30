@@ -1,8 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe ProductsController do
-  let(:new_product) {FactoryGirl.build(:product)}
+  let(:good_params) {
+                      {product: { name:        new_product.name,
+                                  description: new_product.description,
+                                  price:       new_product.price,
+                                  quantity:    new_product.quantity
+                                }
+                      }
+                    }
 
+  let(:bad_params) {
+                    {product: { name:        new_product.name,
+                                description: new_product.description,
+                                price:       "Dollar Bills",
+                                quantity:    "Dog"
+                              }
+                    }
+                  }
+
+  let(:new_product) {FactoryGirl.build(:product)}
 
   describe '#index' do
     before(:each) do
@@ -18,41 +35,96 @@ RSpec.describe ProductsController do
     end
   end
 
-  describe '#create' do
-    let(:params) {
-                  {product: { name:        new_product.name,
-                              description: new_product.description,
-                              price:       new_product.price,
-                              quantity:    new_product.quantity
-                            }
-                  }
-                }
+  describe '#show' do
+    let!(:existing_product) {FactoryGirl.create(:product)}
 
+    before(:each) do
+      get :show, id: existing_product.id
+    end
+
+    it 'assigns the product instance variable' do
+      expect(assigns(:product).id).to eq(existing_product.id)
+    end
+
+    it 'responds with a status of 200' do
+      expect(response.status).to eq(200)
+    end
+  end
+
+  describe '#new' do
+    let!(:existing_product) {FactoryGirl.create(:product)}
+
+    it 'responds with a status of 200' do
+      expect(response.status).to eq(200)
+    end
+  end
+
+  describe '#edit' do
+    let!(:existing_product) {FactoryGirl.create(:product)}
+
+    before(:each) do
+      get :edit, id: existing_product.id
+    end
+
+    it 'assigns the product instance variable' do
+      expect(assigns(:product).id).to eq(existing_product.id)
+    end
+
+    it 'responds with a status of 200' do
+      expect(response.status).to eq(200)
+    end
+  end
+
+  describe '#create' do
     context 'with valid parameters' do
       it 'increases products in the database by 1' do
-        expect{post :create, params}.to change{Product.count}.by(1)
+        expect{post :create, good_params}.to change{Product.count}.by(1)
       end
 
       it 'responds with a status of 302' do
-        post :create, params
+        post :create, good_params
         expect(response.status).to eq(302)
+      end
+    end
+
+    context 'with invalid parameters' do
+      it 'does not change the count of products' do
+        expect{post :create, bad_params}.not_to change{Product.count}
+      end
+
+      it 'renders the new product page again' do
+        post :create, bad_params
+        expect(response).to render_template(:new)
       end
     end
   end
 
   describe '#update' do
-    let!(:existing_product) {FactoryGirl.create(:product)}
-    let(:params) {{ product: { quantity: 42 }, id: existing_product.id}}
+    let!(:update_product) {FactoryGirl.create(:product)}
+    let(:good_params) {{ product: { quantity: 42 }, id: update_product.id }}
 
     context 'with valid parameters' do
       it 'updates the specified attribute' do
-        patch :update, params
-        expect(existing_product.reload.quantity).to eq(42)
+        patch :update, good_params
+        expect(update_product.reload.quantity).to eq(good_params[:product][:quantity])
       end
 
       it 'responds with a status of 302' do
-        patch :update, params
+        patch :update, good_params
         expect(response.status).to eq(302)
+      end
+    end
+
+    context 'with invalid parameters' do
+      let!(:bad_params)  {{ product: { quantity: "Dog" }, id: update_product.id }}
+
+      it 'does not update the specified attribute' do
+        expect{patch :update, bad_params}.not_to change{update_product}
+      end
+
+      it 'render the edit product page again' do
+        patch :update, bad_params
+        expect(response.status).to render_template(:edit)
       end
     end
   end
