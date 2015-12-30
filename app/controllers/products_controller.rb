@@ -4,40 +4,60 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.find(id: params[:id])
   end
 
   def edit
-    @product = Product.find(params[:id])
+    if user_signed_in?
+      @product = Product.find(params[:id])
+    else
+      redirect_to products_path
+    end
   end
 
   def create
-    @product = Product.new(product_params)
-    if @product.save
-      redirect_to products_path
+    if user_signed_in?
+      @product = Product.new(product_params)
+      if @product.save
+        redirect_to products_path
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to products_path
     end
   end
 
   def new
-    @product = Product.new
+    if user_signed_in?
+      @product = Product.new
+    else
+      redirect_to products_path
+    end
   end
 
   def update
-    @product = Product.find(params[:id])
-    @product.update(product_params)
-    if @product.save
-      redirect_to @product
+    if user_signed_in?
+      @product = Product.find(params[:id])
+      @product.assign_attributes(product_params)
+      if @product.save
+        redirect_to @product
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to products_path
     end
   end
 
   def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
-    redirect_to products_path
+    if user_signed_in?
+      @product = Product.find(params[:id])
+      @product.destroy
+      redirect_to products_path
+    else
+      redirect_to products_path
+    end
   end
 
   private
