@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree
+ * for bootstrap form partial
  *= require rails_bootstrap_forms
  *= require_self
  */

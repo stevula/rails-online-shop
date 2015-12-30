@@ -2,28 +2,22 @@
   <div class="row">
     <div class="col-md-12">
       <div class="row">
-        <!-- <div class="col-lg-3">pic</div> -->
-        <!-- <div class="col-lg-9">info</div> -->
+        <div class="col-md-1 col-md-offset-5">
+          <img class="product-img" src="https://avatars1.githubusercontent.com/u/10661978?v=3&s=200">
+        </div>
 
-
-
-    <div class="col-md-1 col-md-offset-5">
-      <img class="product-img" src="https://avatars1.githubusercontent.com/u/10661978?v=3&s=200">
+        <div class="col-md-5" >
+          <ul>
+            <li>Product Name: <%= link_to(product.name, product_path(product)) %></li>
+            <li>Product Price: $ <%= product.price %> </li>
+            <li>Product Quantity: <%= product.quantity %></li>
+          </ul>
+        </div>
+      </div>
     </div>
-
-    <div class="col-md-5" >
-      <ul>
-        <li>Product Name: <%= link_to(product.name, product_path(product)) %></li>
-        <li>Product Price: $ <%= product.price %> </li>
-        <li>Product Quantity: <%= product.quantity %></li>
-      </ul>
-    </div>
-
-  </div>
-    </div>
-
   </div>
 <% end  %>
+
   <div class="row">
     <div class="btn btn-success col-sm-2 col-sm-offset-5" >
       <%= link_to("Create New Product", new_product_path) %>
