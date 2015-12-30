@@ -16,7 +16,6 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path
     else
-      # @errors = @product.errors.full_messages
       render :new
     end
   end
@@ -31,10 +30,10 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to @product
     else
-      @errors = @product.errors.full_messages
       render :edit
     end
   end
+
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
@@ -42,6 +41,7 @@ class ProductsController < ApplicationController
   end
 
   private
+  # method to pull out product attributes
   def product_params
     params.require(:product).permit(:name, :description, :price, :quantity)
   end
