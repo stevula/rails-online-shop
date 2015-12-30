@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update(product_params)
+    @product.assign_attributes(product_params)
     if @product.save
       redirect_to @product
     else
