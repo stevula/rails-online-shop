@@ -35,6 +35,8 @@ gem 'bootstrap_form'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 2.5'
 end
 
 group :development do
