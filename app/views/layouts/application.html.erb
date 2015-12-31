@@ -12,7 +12,7 @@
 <body>
   <header>
     <nav class="navbar navbar-default">
-      <a href="/"><img class="house" src="https://d30y9cdsu7xlg0.cloudfront.net/png/41030-200.png"></a>
+      <div class="container-fluid"><a href="/"><img class="house" src="https://d30y9cdsu7xlg0.cloudfront.net/png/41030-200.png"></a>
       <h1 style="display:inline"> Hipster Shop</h1>
         <div class="navbar-right">
           <% if user_signed_in? %>
@@ -25,14 +25,17 @@
             <%= link_to "Login", new_user_session_path  %>
           <% end %>
         </div>
-
+		</div>
     </nav>
   </header>
 
-  <div class="big-padd">
+  <div class="container">
     <%= yield %>
   </div>
 
-  <p>Thank you Noun Project for the Home image</p>
+  <div class="container">
+  	<p class="text-center">Thank you Noun Project for the Home image</p>
+
+  </div>
 </body>
 </html>
