@@ -19,13 +19,32 @@ ul {
 }
 
 /*stock product image*/
-.product-img{
+/*.product-img{
   width:70px;
   height:70px;
   margin-bottom: 10px;
-}
+}*/
+
 #create-btn{
   margin-top: 10px;
   margin-bottom: 10px;
 
+}
+
+.hover-area {
+  background-image: url("https://avatars1.githubusercontent.com/u/10661978?v=3&s=200");
+  background-size: 100% auto;
+  color: transparent;
+  height: 13.5em;
+  margin: 1em;
+  text-align: center;
+}
+
+.hover-area:hover {
+  font-weight: bold;
+  color: aliceblue;
+}
+
+.hover-txt {
+  margin: 50% 0;
 }
