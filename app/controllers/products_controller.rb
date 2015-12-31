@@ -4,60 +4,50 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(id: params[:id])
+    @product = Product.find(params[:id])
   end
 
   def edit
-    if user_signed_in?
-      @product = Product.find(params[:id])
-    else
-      redirect_to products_path
-    end
+    return redirect_to products_path unless user_signed_in?
+
+    @product = Product.find(params[:id])
   end
 
   def create
-    if user_signed_in?
-      @product = Product.new(product_params)
-      if @product.save
-        redirect_to products_path
-      else
-        render :new
-      end
-    else
+    return redirect_to products_path unless user_signed_in?
+
+    @product = Product.new(product_params)
+    if @product.save
       redirect_to products_path
+    else
+      render :new
     end
   end
 
   def new
-    if user_signed_in?
-      @product = Product.new
-    else
-      redirect_to products_path
-    end
+    return redirect_to products_path unless current_user
+
+    @product = Product.new
   end
 
   def update
-    if user_signed_in?
-      @product = Product.find(params[:id])
-      @product.assign_attributes(product_params)
-      if @product.save
-        redirect_to @product
-      else
-        render :edit
-      end
+    return redirect_to products_path unless user_signed_in?
+
+    @product = Product.find(params[:id])
+    @product.assign_attributes(product_params)
+    if @product.save
+      redirect_to @product
     else
-      redirect_to products_path
+      render :edit
     end
   end
 
   def destroy
-    if user_signed_in?
-      @product = Product.find(params[:id])
-      @product.destroy
-      redirect_to products_path
-    else
-      redirect_to products_path
-    end
+    return redirect_to products_path unless user_signed_in?
+
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to products_path
   end
 
   private
