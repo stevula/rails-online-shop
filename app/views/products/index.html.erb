@@ -1,26 +1,20 @@
 <% @products.each do |product| %>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-1 col-md-offset-5">
-          <img class="product-img" src="https://avatars1.githubusercontent.com/u/10661978?v=3&s=200">
-        </div>
+  <div class="row text-center">
+    <img class="img-responsive col-md-1 col-md-offset-4" src="https://avatars1.githubusercontent.com/u/10661978?v=3&s=200">
 
-        <div class="col-md-5" >
-          <ul>
-            <li>Product Name: <%= link_to(product.name, product_path(product)) %></li>
-            <li>Product Price: $ <%= product.price %> </li>
-            <li>Product Quantity: <%= product.quantity %></li>
-          </ul>
-        </div>
-      </div>
+    <div class="col-md-3 text-left" id="<%= dom_id(product)%>" >
+      <ul>
+        <li>Product Name: <%= link_to(product.name, product_path(product)) %></li>
+        <li>Product Price: $ <%= product.price %> </li>
+        <li>Product Quantity: <%= product.quantity %></li>
+      </ul>
     </div>
   </div>
 <% end  %>
 
 <% if user_signed_in? %>
   <div class="row">
-    <div class="btn btn-success col-sm-2 col-sm-offset-5" >
+    <div class="btn btn-success col-md-4 col-md-offset-4" id="create-btn" >
       <%= link_to("Create New Product", new_product_path) %>
     </div>
   </div>
