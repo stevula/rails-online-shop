@@ -1,15 +1,17 @@
 <% @products.each do |product| %>
-  <div class="row">
-    <img class="img-responsive col-md-1 col-md-offset-4" src="https://avatars1.githubusercontent.com/u/10661978?v=3&s=200">
+  <%= link_to(product_path(product), class: "hover-area col-md-2 col-sm-2 col-xs-6") do %>
+    <%# link_to image_tag("https://avatars1.githubusercontent.com/u/10661978?v=3&s=200", class: "hover-img img-responsive col-md-2 col-sm-2 col-xs-6"), product_path(product) %>
 
-    <div class="col-md-3 text-left" id="<%= dom_id(product)%>" >
-      <ul>
-        <li>Product Name: <%= link_to(product.name, product_path(product)) %></li>
-        <li>Product Price: $ <%= product.price %> </li>
-        <li>Product Quantity: <%= product.quantity %></li>
-      </ul>
-    </div>
-  </div>
+      <div class="hover-txt" id="<%= dom_id(product)%>">
+          <span>
+            <%= product.name %>
+          </span>
+          <div>
+            $<%= product.price %>
+          </div>
+      </div>
+  <% end %>
+
 <% end  %>
 
 <% if user_signed_in? %>

@@ -39,6 +39,8 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'shoulda-matchers', '~> 2.5'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -50,8 +52,6 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl_rails'
-  gem 'faker'
   gem 'simplecov', require: false
   gem 'capybara'
 end

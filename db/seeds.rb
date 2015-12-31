@@ -5,11 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-Product.create(name:"Baseball", description: "Duh I am round", quantity: 3, price: 4.50)
-Product.create(name:"Basketball", description: "Go Warriors", quantity: 10, price: 30.50)
-Product.create(name:"Football", description: "I am odd shaped", quantity: 6, price: 114.50)
-Product.create(name:"Tennis Ball", description: "I am fuzzy", quantity: 0, price: 0)
-
+require 'faker'
+20.times do
+  Product.create(
+    name:        Faker::Commerce.product_name,
+    description: Faker::Company.bs,
+    price:       Faker::Commerce.price,
+    quantity:    Faker::Number.between(0, 20)
+    )
+end
 
