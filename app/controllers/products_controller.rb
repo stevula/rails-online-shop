@@ -8,13 +8,13 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    return redirect_to products_path unless user_signed_in?
+    return redirect_to products_path unless user_signed_in? && current_user.admin
 
     @product = Product.find(params[:id])
   end
 
   def create
-    return redirect_to products_path unless user_signed_in?
+    return redirect_to products_path unless user_signed_in? && current_user.admin
 
     @product = Product.new(product_params)
     if @product.save
@@ -25,13 +25,13 @@ class ProductsController < ApplicationController
   end
 
   def new
-    return redirect_to products_path unless current_user
+    return redirect_to products_path unless user_signed_in? && current_user.admin
 
     @product = Product.new
   end
 
   def update
-    return redirect_to products_path unless user_signed_in?
+    return redirect_to products_path unless user_signed_in? && current_user.admin
 
     @product = Product.find(params[:id])
     @product.assign_attributes(product_params)
@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    return redirect_to products_path unless user_signed_in?
+    return redirect_to products_path unless user_signed_in? && current_user.admin
 
     @product = Product.find(params[:id])
     @product.destroy
