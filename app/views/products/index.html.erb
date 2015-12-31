@@ -6,7 +6,7 @@
           <img class="product-img" src="https://avatars1.githubusercontent.com/u/10661978?v=3&s=200">
         </div>
 
-        <div class="col-md-5" >
+        <div class="col-md-5" id="<%= dom_id(product)%>" >
           <ul>
             <li>Product Name: <%= link_to(product.name, product_path(product)) %></li>
             <li>Product Price: $ <%= product.price %> </li>
