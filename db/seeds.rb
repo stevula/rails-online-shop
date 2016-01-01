@@ -15,3 +15,5 @@ require 'faker'
     )
 end
 
+FactoryGirl.create(:user, :admin)
+FactoryGirl.create(:user, :non_admin)

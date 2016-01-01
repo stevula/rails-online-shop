@@ -1,0 +1,30 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <% @products.first.attributes.keys.each do |attr| %>
+          <th><%= attr %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr id="<%= dom_id(product) %>">
+          <% product.attributes.each do |k, attr| %>
+            <% if k == "name" %>
+              <td><%= link_to(attr, product_path(product)) %></td>
+            <% else %>
+              <td><%= attr %></td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <div class="btn btn-success col-md-4 col-md-offset-4" id="create-btn" >
+    <%= link_to("Create New Product", new_product_path) %>
+  </div>
+</div>

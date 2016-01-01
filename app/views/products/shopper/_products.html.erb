@@ -1,0 +1,15 @@
+<% @products.each do |product| %>
+  <%= link_to(product_path(product), class: "hover-area col-md-2 col-sm-2 col-xs-6") do %>
+    <%# link_to image_tag("https://avatars1.githubusercontent.com/u/10661978?v=3&s=200", class: "hover-img img-responsive col-md-2 col-sm-2 col-xs-6"), product_path(product) %>
+
+      <div class="hover-txt" id="<%= dom_id(product)%>">
+          <span>
+            <%= product.name %>
+          </span>
+          <div>
+            $<%= product.price %>
+          </div>
+      </div>
+  <% end %>
+
+<% end  %>

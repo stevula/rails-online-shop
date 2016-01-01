@@ -18,13 +18,6 @@ ul {
   padding-left: 0px;
 }
 
-/*stock product image*/
-/*.product-img{
-  width:70px;
-  height:70px;
-  margin-bottom: 10px;
-}*/
-
 #create-btn{
   margin-top: 10px;
   margin-bottom: 10px;
@@ -34,6 +27,7 @@ ul {
 .hover-area {
   background-image: url("https://avatars1.githubusercontent.com/u/10661978?v=3&s=200");
   background-size: 100% auto;
+  background-color: gray;
   color: transparent;
   height: 13.5em;
   margin: 1em;
@@ -42,7 +36,8 @@ ul {
 
 .hover-area:hover {
   font-weight: bold;
-  color: aliceblue;
+  color: white;
+  opacity: 0.5;
 }
 
 .hover-txt {
