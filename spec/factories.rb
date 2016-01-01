@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :shopping_cart do
+    
+  end
+
   factory :product do
     name        Faker::Commerce.product_name
     description Faker::Company.bs

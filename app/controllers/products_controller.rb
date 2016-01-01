@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @shopping_cart = ShoppingCart.find_or_create_by(user_id: current_user.id)
     @product = Product.find(params[:id])
   end
 

@@ -1,0 +1,29 @@
+<div class="form-container">
+  <%= bootstrap_form_for @product, label_errors: true, layout: :horizontal do |f| %>
+
+    <div>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.text_area :description %>
+    </div>
+
+    <div>
+      <%= f.text_field :quantity %>
+    </div>
+
+    <div>
+      <%= f.text_field :price %>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-lg-3 col-lg-offset-5">
+        <%= f.submit class: "btn btn-info"%>
+      </div>
+    </div>
+
+  <% end %>
+</div>

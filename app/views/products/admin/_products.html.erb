@@ -9,7 +9,7 @@
     </thead>
     <tbody>
       <% @products.each do |product| %>
-        <tr>
+        <tr id="<%= dom_id(product) %>">
           <% product.attributes.each do |k, attr| %>
             <% if k == "name" %>
               <td><%= link_to(attr, product_path(product)) %></td>
