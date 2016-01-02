@@ -1,21 +1,5 @@
-<% @products.each do |product| %>
-  <div class="row text-center">
-    <img class="img-responsive col-md-1 col-md-offset-4" src="https://avatars1.githubusercontent.com/u/10661978?v=3&s=200">
-
-    <div class="col-md-3 text-left" id="<%= dom_id(product)%>" >
-      <ul>
-        <li>Product Name: <%= link_to(product.name, product_path(product)) %></li>
-        <li>Product Price: $ <%= product.price %> </li>
-        <li>Product Quantity: <%= product.quantity %></li>
-      </ul>
-    </div>
-  </div>
-<% end  %>
-
-<% if user_signed_in? %>
-  <div class="row">
-    <div class="btn btn-success col-md-4 col-md-offset-4" id="create-btn" >
-      <%= link_to("Create New Product", new_product_path) %>
-    </div>
-  </div>
+<% if user_signed_in? && current_user.admin %>
+  <%= render partial: 'products/admin/products'  %>
+<% else %>
+  <%= render partial: 'products/shopper/products'  %>
 <% end %>

@@ -21,7 +21,8 @@ RSpec.describe ProductsController do
                   }
 
   let(:new_product) {FactoryGirl.build(:product)}
-  let(:user) {FactoryGirl.create(:user)}
+  let(:user) {FactoryGirl.create(:user, :non_admin)}
+  let(:admin) {FactoryGirl.create(:user, :admin)}
 
   describe '#index' do
     before(:each) do
@@ -56,9 +57,9 @@ RSpec.describe ProductsController do
   describe '#new' do
     let!(:existing_product) {FactoryGirl.create(:product)}
 
-    context 'when logged in' do
+    context 'when logged in as admin' do
       it 'responds with a status of 200' do
-        sign_in user
+        sign_in admin
         get :new
         expect(response.status).to eq(200)
       end
@@ -75,9 +76,9 @@ RSpec.describe ProductsController do
   describe '#edit' do
     let!(:existing_product) {FactoryGirl.create(:product)}
 
-    context 'when logged in' do
+    context 'when logged in as admin' do
       before(:each) do
-        sign_in user
+        sign_in admin
         get :edit, id: existing_product.id
       end
 
@@ -99,9 +100,9 @@ RSpec.describe ProductsController do
   end
 
   describe '#create' do
-    context 'when logged in' do
+    context 'when logged in as admin' do
       before(:each) do
-        sign_in user
+        sign_in admin
       end
 
       context 'with valid parameters' do
@@ -139,9 +140,9 @@ RSpec.describe ProductsController do
     let!(:update_product) {FactoryGirl.create(:product)}
     let(:good_params) {{ product: { quantity: 42 }, id: update_product.id }}
 
-    context 'when logged in' do
+    context 'when logged in as admin' do
       before(:each) do
-        sign_in user
+        sign_in admin
       end
 
       context 'with valid parameters' do
@@ -181,9 +182,9 @@ RSpec.describe ProductsController do
   describe '#destroy' do
     let!(:existing_product) {FactoryGirl.create(:product)}
 
-    context 'when logged in' do
+    context 'when logged in as admin' do
       before(:each) do
-        sign_in user
+        sign_in admin
       end
 
       context 'with valid parameters' do

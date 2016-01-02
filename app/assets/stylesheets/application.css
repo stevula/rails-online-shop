@@ -15,4 +15,7 @@
  *= require rails_bootstrap_forms
  *= require_self
  */
+ .middle{
+   padding-top: 10px;
+ }
 

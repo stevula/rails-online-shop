@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>Shop</title>
-  <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css"> -->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -14,12 +13,12 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid"><a href="/"><img class="house" src="https://d30y9cdsu7xlg0.cloudfront.net/png/41030-200.png"></a>
       <h1 style="display:inline"> Hipster Shop</h1>
-        <div class="navbar-right">
+        <div class="navbar-right middle">
           <% if user_signed_in? %>
-          <!-- Information provided by devise -->
             Logged in as <strong><%= current_user.email %></strong>.
             <%= link_to 'Edit profile', edit_user_registration_path %> |
-            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %> |
+          <%= link_to "Shopping Cart", edit_user_shopping_cart_path(current_user.id, current_user.shopping_cart.id) %>
           <% else %>
             <%= link_to "Sign up", new_user_registration_path  %> |
             <%= link_to "Login", new_user_session_path  %>
