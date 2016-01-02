@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160101021850) do
 
   create_table "products_shopping_carts", force: :cascade do |t|
     t.integer "product_id"
+    t.integer "quantity",         default: 0
     t.integer "shopping_cart_id"
   end
 
