@@ -1,10 +1,15 @@
 class ProductsController < ApplicationController
   def index
+    if user_signed_in?
+    @shopping_cart = ShoppingCart.find_or_create_by(user_id: current_user.id)
+  end
     @products = Product.all
   end
 
   def show
-    @shopping_cart = ShoppingCart.find_or_create_by(user_id: current_user.id)
+    if user_signed_in?
+      @shopping_cart = ShoppingCart.find_or_create_by(user_id: current_user.id)
+    end
     @product = Product.find(params[:id])
   end
 
